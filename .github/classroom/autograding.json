@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "Test",
+      "setup": "sudo -H pip3 install pytest gymnasium numpy",
+      "run": "pytest",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 10
+    }
+  ]
+}
