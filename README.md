@@ -19,13 +19,13 @@ Você deve adicionar neste projeto e fazer o commit dos seguintes artefatos:
 
 | Atributo        |  Valor     |
 |:----------------|:----------:|
-| Algoritmo       |            |
-| alpha           |            |
-| gamma           |            |
-| epsilon         |            |
-| epsilon_dec     |            |
-| epsilon_min     |            |
-| qtd_episodios   |            |
+| Algoritmo       |   Sarsa    |
+| alpha           |    0.03    |
+| gamma           |     0.98   |
+| epsilon         |     0.98   |
+| epsilon_dec     |     0.9999 |
+| epsilon_min     |    0.0001  |
+| qtd_episodios   |    18.000  |
 
 
 ## Comparação entre abordagens
