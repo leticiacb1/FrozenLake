@@ -44,25 +44,10 @@ def main():
     file_img = 'results/frozen_lake_sarsa'
 
     # ----- Parâmetros para GridSearch ----
-    # alpha =0.05  gamma=0.95  epsilon=0.85 - 15000 episodios
-    # alpha =0.05  gamma=0.95  epsilon=0.95 - 15000 episodios
-    # alpha =0.05  gamma=0.95  epsilon=0.85 - 89%                      |
-    # alpha =0.05  gamma=0.85  epsilon=0.95 - 60%                      |
-    # alpha =0.2  gamma=0.95  epsilon=0.85  - 72%                      |
-    # alpha =0.03  gamma=0.85  epsilon=0.88 - 72%                      |
-    # alpha =0.03  gamma=0.95  epsilon=0.95 - 77%                      | 
-    # alpha =0.03  gamma=0.98  epsilon=0.95 - 91 %                     |   
-    # alpha =0.03  gamma=0.98  epsilon=0.98 - 91 %                18000 episodios
-    # alpha =0.05  gamma=0.95  epsilon=0.95 - 73%                      |
-    # alpha =0.05  gamma=0.95  epsilon=0.98 - 84%                      |
-    # alpha =0.05  gamma=0.98  epsilon=0.88 - 87%                      |
-    # alpha =0.1  gamma=0.98  epsilon=0.88  - 87%                      |
-    # alpha =0.15  gamma=0.98  epsilon=0.98 - 88%                      |
-    # alpha =0.15  gamma=0.95  epsilon=0.95 - 80%                      |  
-    # alpha =0.15  gamma=0.98  epsilon=0.98 - 88%                      | 
+    # 91 % acerto : alpha = 0.03 , gamma = 0.98 , epsilon = 0.98
 
     list_alpha = [0.01, 0.03, 0.05 , 0.5, 0.1 , 0.15 , 0.2]   
-    list_gamma = [0.8 ,0.85 , 0.95 , 0.98]  
+    list_gamma = [0.85 , 0.95 , 0.98]  
     list_epsilon = [0.85 , 0.88,  0.9, 0.95 , 0.98] 
 
     epsilon_min = 0.0001
@@ -92,16 +77,10 @@ def main():
 
                 # ----- Treina modelo -----
                 sarsa = Sarsa(env, alpha=alpha, gamma=gamma, epsilon=epsilon, epsilon_min=epsilon_min, epsilon_dec=epsilon_dec, episodes=episodes)
-                qtable , medium_rewards_per10 , actions_per_episode = sarsa.train()
+                qtable , rewards_per_episode , actions_per_episode = sarsa.train()
 
-                # --- Media de acertos ---
-                goals = np.mean(medium_rewards_per10)
-                print(f"------- alpha ={alpha}  gamma={gamma}  epsilon={epsilon}--------")
-                print(goals)
-
-                teste = test_performance(qtable)
-                print(teste)
-                print("------------------------------------------------")
+                # --- Percentual de acertos ---
+                goals = test_performance(qtable)
                 
                 parameters_str = f"{alpha} , {gamma} , {epsilon}"
                 dic_goals[parameters_str] = goals
@@ -115,7 +94,9 @@ def main():
                     sarsa.plotactions(file_img, actions_per_episode, range(0, episodes) , 'Actions vs Episodes - Sarsa', 'Episodes', 'Actions')
 
                 # --- Atualiza Progresso ---
-                #bar.next()
+                bar.next()
+    
+            
     print("\n--------------------------------------\n")
     print(dic_goals)
     print("\n--------------------------------------\n")
