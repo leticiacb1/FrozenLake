@@ -30,4 +30,8 @@ Você deve adicionar neste projeto e fazer o commit dos seguintes artefatos:
 
 ## Comparação entre abordagens
 
-* inserir o seu gráfico aqui, se for o caso. 
+<img src="results/Goals_vs_Alpha.jpg"/>
+
+<img src="results/Goals_vs_Epsilon.jpg"/>
+
+<img src="results/Goals_vs_Hyperparameters_3D.jpg"/>
