@@ -14,7 +14,7 @@ class QLearning(Algoritimo):
     def train(self):
         
         actions_per_episode = []
-        reward_per10_episode = []
+        reward_per_episode = []
         reward_list = []
         
         for i in range(1, self.episodes+1):
@@ -45,22 +45,9 @@ class QLearning(Algoritimo):
                 total_rewards+=reward
         
             actions_per_episode.append(actions)
-            # reward_per10_episode.append(total_rewards)
+            reward_per_episode.append(total_rewards)
 
-            # Tratar ruidos do gráfico:
-            if(i%10 == 0):
-                # Média do total_rewards a cada 10 episodios:
-                media = np.mean(reward_list)
-                reward_per10_episode.append(media)
-                reward_list = []
-            else:
-                reward_list.append(total_rewards)
-
-            # if i % 100 == 0:
-                # sys.stdout.write(" > Episodes: " + str(i) +'\r')
-                # sys.stdout.flush()
-            
             if self.epsilon > self.epsilon_min:
                 self.epsilon = self.epsilon * self.epsilon_dec
 
-        return self.q_table , reward_per10_episode , actions_per_episode
+        return self.q_table , reward_per_episode , actions_per_episode

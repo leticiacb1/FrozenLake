@@ -5,7 +5,7 @@ from numpy import loadtxt
 def test_01(): 
 
     env = gym.make("FrozenLake-v1", map_name="8x8", is_slippery=True).env
-    q_table = loadtxt('data/q-table.csv', delimiter=',')
+    q_table = loadtxt('data/q-table-frozen-lake-sarsa.csv', delimiter=',')
     rewards = 0
 
     for i in range(0,1000):    
@@ -20,7 +20,7 @@ def test_01():
 def test_02(): 
 
     env = gym.make("FrozenLake-v1", map_name="8x8", is_slippery=True).env
-    q_table = loadtxt('data/q-table.csv', delimiter=',')
+    q_table = loadtxt('data/q-table-frozen-lake-sarsa.csv', delimiter=',')
     rewards = 0
 
     for i in range(0,1000):    
@@ -35,7 +35,7 @@ def test_02():
 def test_03(): 
 
     env = gym.make("FrozenLake-v1", map_name="8x8", is_slippery=True).env
-    q_table = loadtxt('data/q-table.csv', delimiter=',')
+    q_table = loadtxt('data/q-table-frozen-lake-sarsa.csv', delimiter=',')
     rewards = 0
 
     for i in range(0,1000):    
@@ -50,7 +50,7 @@ def test_03():
 def test_04(): 
 
     env = gym.make("FrozenLake-v1", map_name="8x8", is_slippery=True).env
-    q_table = loadtxt('data/q-table.csv', delimiter=',')
+    q_table = loadtxt('data/q-table-frozen-lake-sarsa.csv', delimiter=',')
     rewards = 0
 
     for i in range(0,1000):    
