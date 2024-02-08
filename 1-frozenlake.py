@@ -2,18 +2,27 @@ from IPython.display import clear_output
 import gymnasium as gym
 import numpy as np
 import matplotlib.pyplot as plt
-from QLearning import QLearning
-from Sarsa import Sarsa
+
+from algorithms.QLearning import QLearning
+from algorithms.Sarsa import Sarsa
+
 from numpy import loadtxt
 from numpy import savetxt
+
 import warnings
 import json
+
 from plot_performance import *
 
 import time
 from progress.bar import IncrementalBar
   
 warnings.simplefilter("ignore")
+
+# ----------------- USO -----------------
+# Rode esse arquivo para realizar  abusca dos melhores parâmetros para o algorítimo Sarsa (algorítimo escolhido por mim para a analise).
+# O resultado desse programa escreverá o desemprenho dos melhores parâmetros no arquivo da variável file_csv e desenhará um gráfico (varaiável file_img).
+# ---------------------------------------
 
 def test_performance(qtable):
     '''
@@ -80,7 +89,7 @@ def main():
                 # ----- Ambiente -----
                 env = gym.make('FrozenLake-v1', map_name="8x8", render_mode='ansi').env
 
-                # ----- Treina modelo -----
+                # ----- Treina modelo (Algorítimo Sarsa) -----
                 sarsa = Sarsa(env, alpha=alpha, gamma=gamma, epsilon=epsilon, epsilon_min=epsilon_min, epsilon_dec=epsilon_dec, episodes=episodes)
                 qtable , rewards_per_episode , actions_per_episode = sarsa.train()
 
@@ -94,7 +103,7 @@ def main():
                     best_goal = goals
                     best_set = [alpha, gamma, epsilon]
 
-                    # Salva melhor tabela:
+                    # --- Descomente para salva melhor tabela ---
                     # savetxt(file_csv, qtable, delimiter=',')
                     # sarsa.plotactions(file_img, np.cumsum(list_rewards), range(0, 100) , 'Best acumulative rewards vs Episodes - Sarsa', 'Episodes', 'Acumulative Rewards')
 

@@ -2,6 +2,10 @@ import gymnasium as gym
 import numpy as np
 from numpy import loadtxt
 
+# ----------------- USO -----------------
+# Testa percentual de acerto dos melhores parâmetros encontrados. (Rodar arquivo 1-frozenlake.py para obter esses parâmetros)
+# ---------------------------------------
+
 def test_01(): 
 
     env = gym.make("FrozenLake-v1", map_name="8x8", is_slippery=True).env
