@@ -1,25 +1,25 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10442228&assignment_repo_type=AssignmentRepo)
-# 🧊️ FrozenLake 8x8
+## 🧊️ FrozenLake 8x8
 
-Considerando o ambiente FrozenLake 8x8 versão não-determinística, implementou-se um agente capaz de chegar ao objetivo final em pelo menos 80% das vezes. Para isso testou-se os algoritmos *Q-Learning* ou *Sarsa* com diferentes combinações de hiperparâmetros para obter o melhor modelo capaz de resolver o problema. 
+Considerando o ambiente FrozenLake 8x8 versão não-determinística, implementou-se um agente capaz de chegar ao objetivo final em pelo menos 80% das vezes. Para isso testou-se os algoritmos *Q-Learning* ou *Sarsa* com diferentes combinações de hiperparâmetros para obter o melhor modelo capaz de resolver o problema com percentual de acertos superior a 80%. 
 
 <div align="center">
 <img alt="FrozenLakeExample" src="img/frozen_lake.gif">
 </div>
 
-Você deve adicionar neste projeto e fazer o commit dos seguintes artefatos: 
+## 🗃️ Organização dos Arquivos
 
-* o arquivo `q-table.csv` dentro do diretório `data`. Já existe um arquivo q-table neste projeto, mas ele é para a versão do ambiente 4x4. Quando você executar o arquivo `test_frozenlake.py` usando o comando `pytest`irá ocorrer um erro de `IndexError`. Você deve substituir este arquivo pelo arquivo gerado pelo seu agente durante o período de treinamento; 
+* `data/` : Pasta que possui o arquivo com os dados resultados do treinamento do agente. O arquivo *.csv* será gerado pós rodar o arquivo : *1-frozenlake.py*.
 
-* depois de substituir o arquivo `data/q-table.csv`, você poderá executar os testes e verificar se o mesmo é aprovado em todos os testes. São quatro testes: o primeiro executa o ambiente 1000 vezes e verifica se o agente conseguiu chegar ao final em no mínimo 700 vezes. Os outros 3 testes fazem exatamente a mesma coisa: executam o agente no ambiente 1000 vezes e verificam se o agente conseguiu chegar ao final em no mínimo 800 vezes;
+* `results/` : Pasta que possui gráficos com comparação do desempenho do agente de acordo com o parâmetro.
 
-* você também deve adicionar a sua implementação no diretório raiz deste projeto, e;
+* `1-frozenlake.py` : Preenche o excel com os melhores dados de treinamento obtidos pelo agente.
 
-* alterar este arquivo README.md informando os hiperparâmetros utilizados para o treinamento. 
+* `2-test_frozenlake.py` : Testa se os dados de treinamento obtidos obtém um bom percentual de acerto. São quatro testes: o primeiro executa o ambiente 1000 vezes e verifica se o agente conseguiu chegar ao final em no mínimo 700 vezes. Os outros 3 testes fazem exatamente a mesma coisa: executam o agente no ambiente 1000 vezes e verificam se o agente conseguiu chegar ao final em no mínimo 800 vezes;
 
-* (critério para A+) apresentar um gráfico comparando a curva de aprendizagem de diversas abordagens utilizadas durante o treinamento. 
 
-## Algoritmo e hiperparâmetros utilizados para o treinamento
+## 🎯️ Algoritmo e hiperparâmetros utilizados para o treinamento
+
+A seguir é possível observar os melhores parâmetros obtidos em um treinamento que realize.
 
 | Atributo        |  Valor     |
 |:----------------|:----------:|
@@ -31,11 +31,16 @@ Você deve adicionar neste projeto e fazer o commit dos seguintes artefatos:
 | epsilon_min     |    0.0001  |
 | qtd_episodios   |    18.000  |
 
+## ⚙️ Rodando o projeto
 
-## Comparação entre abordagens
+`Treinando o agente`
 
-<img src="results/Goals_vs_Alpha.jpg"/>
+```bash
+  python3 1-frozenlake.py
+```
 
-<img src="results/Goals_vs_Epsilon.jpg"/>
+`Testando a performance`
 
-<img src="results/Goals_vs_Hyperparameters_3D.jpg"/>
+```bash
+  pytest 2-test_frozenlake.py
+```
